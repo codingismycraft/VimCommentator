@@ -1,1 +1,1 @@
-nnoremap <C-_> :echo "junk"<CR>
+vnoremap <C-_> <ESC>:call VimCommentator#ToggleComments()<CR>
