@@ -37,6 +37,16 @@ if file_type == 'python':
     comment_out_char = '#'
 elif file_type == 'cpp':
     comment_out_char = '//'
+elif file_type == 'c':
+    comment_out_char = '//'
+elif file_type == 'sh':
+    comment_out_char = '#'
+elif file_type == 'vim':
+    comment_out_char = '"'
+elif file_type == 'make':
+    comment_out_char = '#'
+elif file_type == 'javascript':
+    comment_out_char = '//'
 else:
     print("File type is not supported..")
     
