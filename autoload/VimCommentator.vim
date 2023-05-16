@@ -26,10 +26,7 @@ import os
 import sys
 import vim
 
-file_type = vim.eval("&filetype")
-file_type = file_type.strip()
-
-print("the file type is: ", file_type)
+file_type = vim.eval("&filetype").strip()
 
 comment_out_char = None
 
