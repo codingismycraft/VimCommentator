@@ -24,16 +24,27 @@ def readLines(root, file):
         return fin.readlines()
 
 
+def getCommentChar(before_filename):
+    """Retrieves the corresponding comment chars for the file passed. """
+    f = before_filename.replace("before", "commentchar")
+    f = os.path.join(TESTING_DIR, f)
+    with open(f) as fin:
+        for l in fin.readlines():
+            return l.strip()
+
+
 def getBeforeAfterFilenames():
-    """Generate pairs of 'before' and 'after' commenting out files.
+    """Generate tuples of 'before', 'after' and commenting char.
 
     Yields:
-    tuple[str, str]: A pair of 'before' and 'after' file names.
+    tuple[str, str, str]: A tuple of 'before', 'after' file names and the
+    comment char.
     """
     files = sorted(os.listdir(TESTING_DIR))
     before = [f for f in files if f.startswith('before')]
     for f in before:
-        yield f, f.replace("before", "after")
+        comment_char = getCommentChar(f)
+        yield f, f.replace("before", "after"), comment_char
 
 
 def test_needsToCommentOut():
@@ -120,12 +131,11 @@ def test_uncommentOut():
 
 def test_toggleComments():
     """Tests the toggleComments function."""
-    for f1, f2 in getBeforeAfterFilenames():
-        if '6' not in f1:
-            continue
+    for f1, f2, commentOutChar in getBeforeAfterFilenames():
+        print(f1)
         actual_lines = readLines(TESTING_DIR, f1)
         expected = readLines(TESTING_DIR, f2)
-        retrieved = commentator.toggleComments(actual_lines)
+        retrieved = commentator.toggleComments(actual_lines, commentOutChar)
         assert len(expected) == len(retrieved)
         for l1, l2 in zip(expected, retrieved):
             assert l1 == l2

@@ -10,7 +10,10 @@ def lenPrefixingSpaces(line):
     Returns:
     int: The number of prefixing spaces in the line.
     """
-    return len(line) - len(line.lstrip())
+    if line == '\n':
+        return 0
+    else:
+        return len(line) - len(line.lstrip())
 
 
 def findLeftMargin(lines):
@@ -53,7 +56,11 @@ def commentOut(line, margin, commentChar='#'):
     str: The commented line with the specified margin and comment character.
     """
     left_over = lenPrefixingSpaces(line) - margin
-    return margin * ' ' + commentChar + ' ' + ' ' * left_over + line.lstrip()
+    if line == '\n':
+        return commentChar + "\n"
+    else:
+        return margin * ' ' + \
+               commentChar + ' ' + ' ' * left_over + line.lstrip()
 
 
 def uncommentOut(line, commentChar='#'):
@@ -67,8 +74,9 @@ def uncommentOut(line, commentChar='#'):
     str: The uncommented line.
     """
     x = lenPrefixingSpaces(line)
-    assert line[x] == commentChar
-    prefix, suffix = line[0:x], line[x + 1:]
+    l = len(commentChar)
+    assert line[x:x + l] == commentChar
+    prefix, suffix = line[0:x], line[x + l:]
     return prefix + suffix[1:] if len(suffix.strip()) > 0 else "\n"
 
 
