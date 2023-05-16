@@ -1,6 +1,6 @@
 # VimCommentator
-VimCommentator is a plugin that allows for commenting and uncommenting lines of
-code using virtual selections and the <C-/> (Control and forward slash)
+VimCommentator is a vim plugin that allows for commenting and uncommenting lines of
+code using visual selections and the <C-/> (Control and forward slash)
 keyboard combination.
 
 
