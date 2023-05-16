@@ -1,0 +1,25 @@
+def foo():
+    my_var = 'JUNK'
+
+
+an_int = 78822
+a_float = 78822.1233
+
+
+class Y:
+    def goo(self):
+        x = Y.MY_NAME
+        y = "THIS IS A TEST"
+        local_var = 1224
+    pass
+
+x = 1
+
+def foo():
+
+    print("this is test.")
+
+
+
+
+

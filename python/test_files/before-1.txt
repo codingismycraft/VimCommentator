@@ -1,0 +1,6 @@
+# class Y:
+#     def goo(self):
+#         x = Y.MY_NAME
+#         y = "THIS IS A TEST"
+#         local_var = 1224
+#     pass

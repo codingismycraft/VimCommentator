@@ -1,0 +1,5 @@
+    def goo():
+        def junk():
+            pass
+        pass
+    return goo
